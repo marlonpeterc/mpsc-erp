@@ -25,10 +25,9 @@ public class PersonRepositoryImpl implements PersonRepository {
 
     @Override
     public Flux<String> findPerson(String lastname) {
-        Flux<String> person = operations.execute(conn -> conn.stringCommands().get(ByteBuffer.wrap(lastname.getBytes())))
+        return operations.execute(conn -> conn.stringCommands().get(ByteBuffer.wrap(lastname.getBytes())))
                 .map(ByteUtils::getBytes)
                 .map(String::new);
-        return person;
     }
 
     @Override
