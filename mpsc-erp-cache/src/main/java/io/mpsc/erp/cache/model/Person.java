@@ -1,5 +1,7 @@
 package io.mpsc.erp.cache.model;
 
+import java.util.Objects;
+
 public class Person {
 
     private String firstname;
@@ -27,5 +29,20 @@ public class Person {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return Objects.equals(firstname, person.firstname) &&
+                Objects.equals(lastname, person.lastname);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(firstname, lastname);
     }
 }

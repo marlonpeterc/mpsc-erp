@@ -8,7 +8,9 @@ public interface PersonRepository {
 
     String PERSON_CACHE_KEY = "Person";
 
-    Mono<Person> add(Person person);
+    Mono<Boolean> add(Person person);
+
+    Flux<String> findPerson(String lastname);
 
     Mono<Person> findPersonBy(String lastname);
 
